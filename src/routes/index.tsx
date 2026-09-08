@@ -250,7 +250,7 @@ function MenuSectionBlock({ section }: { section: MenuSection }) {
                   />
                 </div>
                 <div className="flex items-center justify-between gap-3 p-4">
-                  <h3 className="min-w-0 truncate font-display text-lg font-bold">{item.name}</h3>
+                  <h3 className="min-w-0 font-display text-lg font-bold">{item.name}</h3>
                   <span
                     className={`shrink-0 rounded-full px-3 py-1 text-sm font-bold text-primary-foreground ${section.chip}`}
                   >
