@@ -45,6 +45,8 @@
   --color-soft-green: var(--soft-green);
   --color-soft-green-deep: var(--soft-green-deep);
   --color-cream: var(--cream);
+  --shadow-pink: 0 12px 30px -16px color-mix(in oklab, var(--pastel-pink-deep) 35%, transparent);
+  --shadow-pink-strong: 0 20px 42px -16px color-mix(in oklab, var(--pastel-pink-deep) 48%, transparent);
 }
 
 @theme {
@@ -115,6 +117,46 @@
   }
 }
 
+@utility shadow-pink {
+  box-shadow: var(--shadow-pink);
+}
+
+@utility shadow-pink-strong {
+  box-shadow: var(--shadow-pink-strong);
+}
+
+@utility footer-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--card) 84%, transparent);
+  padding: 0.7rem 1.15rem;
+  color: var(--foreground);
+  font-weight: 700;
+  box-shadow: var(--shadow-pink);
+  transition: transform 220ms ease, color 220ms ease, background-color 220ms ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    color: var(--soft-green-deep);
+    background: var(--card);
+  }
+}
+
+@keyframes logo-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@utility logo-float {
+  animation: logo-float 4.5s ease-in-out infinite;
+}
+
+.menu-card {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -122,6 +164,13 @@
   .reveal {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+  .logo-float {
+    animation: none;
+  }
+  .menu-card,
+  .footer-link {
     transition: none;
   }
 }
