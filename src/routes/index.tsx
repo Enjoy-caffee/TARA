@@ -5,8 +5,6 @@ import {
   Coffee,
   Citrus,
   MapPin,
-  Phone,
-  Mail,
   Instagram,
   MessageCircle,
 } from "lucide-react";
@@ -72,9 +70,20 @@ const SECTIONS: MenuSection[] = [
     chip: "bg-pastel-pink-deep",
     items: [
       { name: "كوكيز شوكولاتة كلاسيك", price: "25,000", image: cookieClassic },
-      { name: "ريد فيلفت", price: "30,000", image: cookieRedVelvet },
-      { name: "بستاشيو", price: "35,000", image: cookiePistachio },
+      { name: "M&M's", price: "30,000", image: cookieClassic },
       { name: "لوتس", price: "30,000", image: cookieLotus },
+      { name: "دوبل شوكو", price: "30,000", image: cookieClassic },
+      { name: "ريد فيلفت", price: "30,000", image: cookieRedVelvet },
+      { name: "شوفان", price: "28,000", image: cookieClassic },
+      { name: "بستاشيو", price: "35,000", image: cookiePistachio },
+      { name: "بيرث داي", price: "35,000", image: cookieRedVelvet },
+      { name: "أوريو", price: "30,000", image: cookieClassic },
+      { name: "سمورز", price: "32,000", image: cookieLotus },
+      { name: "شوكو البندق", price: "32,000", image: cookiePistachio },
+      { name: "كراميل", price: "30,000", image: cookieLotus },
+      { name: "كندر", price: "35,000", image: cookieClassic },
+      { name: "فراولة", price: "30,000", image: cookieRedVelvet },
+      { name: "مونستر", price: "38,000", image: cookiePistachio },
     ],
   },
   {
@@ -84,9 +93,16 @@ const SECTIONS: MenuSection[] = [
     tint: "bg-baby-blue",
     chip: "bg-baby-blue-deep",
     items: [
-      { name: "آيس لاتيه", price: "28,000", image: coldIceLatte },
-      { name: "آيس موكا", price: "32,000", image: coldIceMocha },
-      { name: "فرابيه فراولة", price: "30,000", image: coldFrappe },
+      { name: "لاتيه فراولة", price: "30,000", image: coldFrappe },
+      { name: "ماتشا كوكب الأرض", price: "35,000", image: coldIceLatte },
+      { name: "لاتيه ماتشا", price: "32,000", image: coldIceLatte },
+      { name: "لاتيه بستاشيو", price: "35,000", image: coldIceMocha },
+      { name: "لاتيه فانيليا", price: "30,000", image: coldIceLatte },
+      { name: "كراميل ماكياتو", price: "32,000", image: coldIceMocha },
+      { name: "سبانيش لاتيه", price: "32,000", image: coldIceLatte },
+      { name: "لاتيه تيراميسو", price: "35,000", image: coldIceMocha },
+      { name: "لاتيه الموز", price: "32,000", image: coldFrappe },
+      { name: "لاتيه ماتشا بالفراولة", price: "35,000", image: coldFrappe },
     ],
   },
   {
@@ -96,9 +112,15 @@ const SECTIONS: MenuSection[] = [
     tint: "bg-soft-green",
     chip: "bg-soft-green-deep",
     items: [
-      { name: "هوت شوكليت", price: "28,000", image: hotChocolate },
+      { name: "لاتيه بستاشيو", price: "32,000", image: hotLatte },
       { name: "لاتيه", price: "26,000", image: hotLatte },
+      { name: "موكا", price: "28,000", image: hotChocolate },
+      { name: "لاتيه فانيليا", price: "28,000", image: hotLatte },
+      { name: "لاتيه ماتشا", price: "30,000", image: hotLatte },
+      { name: "هوت شوكلت", price: "28,000", image: hotChocolate },
       { name: "كابتشينو", price: "26,000", image: hotCappuccino },
+      { name: "إسبريسو", price: "22,000", image: hotCappuccino },
+      { name: "أمريكانو", price: "24,000", image: hotCappuccino },
     ],
   },
   {
@@ -108,9 +130,14 @@ const SECTIONS: MenuSection[] = [
     tint: "bg-pastel-pink",
     chip: "bg-pastel-pink-deep",
     items: [
-      { name: "موهيتو كلاسيك", price: "30,000", image: mojitoClassic },
-      { name: "موهيتو فراولة", price: "33,000", image: mojitoStrawberry },
-      { name: "بلو موهيتو", price: "33,000", image: mojitoBlue },
+      { name: "بلوبيري موهيتو", price: "33,000", image: mojitoBlue },
+      { name: "ستروبيري موهيتو", price: "33,000", image: mojitoStrawberry },
+      { name: "رمان موهيتو", price: "33,000", image: mojitoStrawberry },
+      { name: "بلو كوكونت موهيتو", price: "35,000", image: mojitoBlue },
+      { name: "توت موهيتو", price: "33,000", image: mojitoStrawberry },
+      { name: "ليمون موهيتو", price: "30,000", image: mojitoClassic },
+      { name: "باشن فروت موهيتو", price: "35,000", image: mojitoClassic },
+      { name: "أناناس موهيتو", price: "33,000", image: mojitoClassic },
     ],
   },
 ];
@@ -132,7 +159,6 @@ function Index() {
         {SECTIONS.map((section) => (
           <MenuSectionBlock key={section.id} section={section} />
         ))}
-        <VisitUs />
       </main>
       <SiteFooter />
     </div>
@@ -182,7 +208,7 @@ function Hero() {
           <img
             src={logoAsset.url}
             alt="شعار كافيه Tara مع كوكيز الفراولة"
-            className="h-44 w-44 rounded-full object-cover shadow-xl ring-4 ring-card sm:h-56 sm:w-56"
+            className="logo-float h-44 w-44 rounded-full object-cover shadow-pink ring-4 ring-card sm:h-56 sm:w-56"
             width={224}
             height={224}
           />
@@ -235,24 +261,24 @@ function MenuSectionBlock({ section }: { section: MenuSection }) {
             <h2 className="font-display text-3xl font-bold sm:text-4xl">{section.title}</h2>
           </div>
         </Reveal>
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
           {section.items.map((item, i) => (
             <Reveal key={item.name} delay={i * 90}>
-              <article className="group overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-shadow hover:shadow-lg">
-                <div className="aspect-[4/3] overflow-hidden">
+              <article className="menu-card group flex min-h-32 overflow-hidden rounded-3xl border border-pastel-pink/60 bg-card p-3 shadow-pink transition-all duration-300 hover:-translate-y-1 hover:shadow-pink-strong">
+                <div className="h-28 w-28 shrink-0 overflow-hidden rounded-2xl sm:h-32 sm:w-32">
                   <img
                     src={item.image}
                     alt={item.name}
                     loading="lazy"
                     width={1024}
                     height={768}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
-                <div className="flex items-center justify-between gap-3 p-4">
-                  <h3 className="min-w-0 font-display text-lg font-bold">{item.name}</h3>
+                <div className="flex min-w-0 flex-1 flex-col justify-between gap-3 p-3">
+                  <h3 className="font-display text-lg font-bold leading-snug">{item.name}</h3>
                   <span
-                    className={`shrink-0 rounded-full px-3 py-1 text-sm font-bold text-primary-foreground ${section.chip}`}
+                    className={`w-fit shrink-0 rounded-full px-3 py-1 text-sm font-bold text-primary-foreground ${section.chip}`}
                   >
                     {item.price} ل.س
                   </span>
@@ -266,110 +292,42 @@ function MenuSectionBlock({ section }: { section: MenuSection }) {
   );
 }
 
-/* ---------------------------------- Visit us --------------------------------- */
+/* ---------------------------------- Footer ---------------------------------- */
 
-function VisitUs() {
+function SiteFooter() {
   return (
-    <section id="visit-us" className="scroll-mt-20 bg-baby-blue py-16 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4 text-center">
-        <Reveal>
-          <h2 className="font-display text-3xl font-bold sm:text-4xl">زورونا</h2>
-          <p className="mt-3 text-foreground/70">
-            يسعدنا استقبالكم في كافيه Tara — المكان الألطف لألذ كوكيز.
+    <footer id="visit-us" className="scroll-mt-20 bg-soft-green py-14 sm:py-16">
+      <Reveal>
+        <div className="mx-auto flex max-w-4xl flex-col items-center px-4 text-center">
+          <img
+            src={logoAsset.url}
+            alt="شعار Tara"
+            className="h-24 w-24 rounded-full object-cover shadow-pink ring-2 ring-card"
+            loading="lazy"
+            width={96}
+            height={96}
+          />
+          <h2 className="mt-4 font-display text-3xl font-bold text-soft-green-deep">Tara</h2>
+          <p className="mt-1 text-sm text-foreground/70" dir="ltr">
+            One bite is never enough
           </p>
-        </Reveal>
-        <Reveal delay={150}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={CONTACT.maps}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-display font-bold text-primary-foreground shadow-lg transition-transform hover:scale-105"
-            >
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <a href={CONTACT.maps} target="_blank" rel="noreferrer" className="footer-link">
               <MapPin className="h-5 w-5" aria-hidden />
-              موقعنا على الخريطة
+              موقعنا
             </a>
-            <a
-              href={CONTACT.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 rounded-full bg-card px-6 py-3 font-display font-bold text-pastel-pink-deep shadow-lg transition-transform hover:scale-105"
-            >
+            <a href={CONTACT.instagram} target="_blank" rel="noreferrer" className="footer-link">
               <Instagram className="h-5 w-5" aria-hidden />
               Instagram
             </a>
-            <a
-              href={CONTACT.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 rounded-full bg-card px-6 py-3 font-display font-bold text-soft-green-deep shadow-lg transition-transform hover:scale-105"
-            >
+            <a href={CONTACT.whatsapp} target="_blank" rel="noreferrer" className="footer-link">
               <MessageCircle className="h-5 w-5" aria-hidden />
               WhatsApp
             </a>
           </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------------------------- Footer ---------------------------------- */
-
-function SiteFooter() {
-  const iconLink =
-    "flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-card hover:text-soft-green-deep";
-  return (
-    <footer className="bg-soft-green py-12">
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 px-4 sm:grid-cols-3">
-        <div>
-          <h3 className="font-display text-xl font-bold">تواصل معنا</h3>
-          <div className="mt-4 flex flex-col items-start gap-1">
-            <a href={CONTACT.maps} target="_blank" rel="noreferrer" className={iconLink}>
-              <MapPin className="h-5 w-5 shrink-0" aria-hidden />
-              موقع الكافيه
-            </a>
-            <a href={CONTACT.phone} className={iconLink}>
-              <Phone className="h-5 w-5 shrink-0" aria-hidden />
-              <span dir="ltr">+963 900 000 000</span>
-            </a>
-            <a href={CONTACT.email} className={iconLink}>
-              <Mail className="h-5 w-5 shrink-0" aria-hidden />
-              hello@tara-cafe.com
-            </a>
-          </div>
+          <p className="mt-9 text-xs text-foreground/55">جميع الحقوق محفوظة © Tara Café</p>
         </div>
-        <div>
-          <h3 className="font-display text-xl font-bold">تابعنا</h3>
-          <div className="mt-4 flex flex-col items-start gap-1">
-            <a href={CONTACT.instagram} target="_blank" rel="noreferrer" className={iconLink}>
-              <Instagram className="h-5 w-5 shrink-0" aria-hidden />
-              <span dir="ltr">@tara_cookies</span>
-            </a>
-            <a href={CONTACT.whatsapp} target="_blank" rel="noreferrer" className={iconLink}>
-              <MessageCircle className="h-5 w-5 shrink-0" aria-hidden />
-              محادثة واتساب مباشرة
-            </a>
-          </div>
-        </div>
-        <div className="flex flex-col items-center justify-center text-center">
-          <img
-            src={logoAsset.url}
-            alt="شعار Tara"
-            className="h-20 w-20 rounded-full object-cover ring-2 ring-card"
-            loading="lazy"
-            width={80}
-            height={80}
-          />
-          <p className="mt-3 font-display text-lg font-bold text-soft-green-deep">Tara</p>
-          <p className="text-sm text-foreground/70" dir="ltr">
-            One bite is never enough
-          </p>
-        </div>
-      </div>
-      <p className="mt-10 text-center text-xs text-foreground/50">
-        جميع الحقوق محفوظة © Tara Café
-      </p>
+      </Reveal>
     </footer>
   );
 }
