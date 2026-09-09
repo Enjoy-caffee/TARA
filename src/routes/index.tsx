@@ -152,10 +152,10 @@ const CONTACT = {
 
 function Index() {
   return (
-    <div className="min-h-screen bg-background font-body">
+    <div className="min-h-screen overflow-hidden bg-background font-body text-foreground">
       <Header />
       <Hero />
-      <main>
+      <main className="relative">
         {SECTIONS.map((section) => (
           <MenuSectionBlock key={section.id} section={section} />
         ))}
@@ -169,24 +169,24 @@ function Index() {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-5">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-2xl border border-card/80 bg-card/85 px-3 py-2 shadow-pink backdrop-blur-xl sm:px-5">
         <a href="#top" className="flex shrink-0 items-center gap-2">
           <img
             src={logoAsset.url}
             alt="شعار كافيه Tara"
-            className="h-11 w-11 rounded-full object-cover"
+            className="h-10 w-10 rounded-full object-cover ring-2 ring-pastel-pink sm:h-11 sm:w-11"
             width={44}
             height={44}
           />
-          <span className="font-display text-2xl font-bold text-soft-green-deep">Tara</span>
+          <span className="font-display text-xl font-bold text-cocoa sm:text-2xl">Tara</span>
         </a>
-        <nav aria-label="أقسام المنيو" className="flex items-center gap-1 overflow-x-auto sm:gap-2">
+        <nav aria-label="أقسام المنيو" className="flex items-center gap-0.5 overflow-x-auto sm:gap-1">
           {SECTIONS.map((s) => (
             <a
               key={s.id}
               href={`#${s.id}`}
-              className="flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="flex shrink-0 items-center gap-1.5 rounded-xl px-2.5 py-2 text-sm font-semibold text-foreground/75 transition-colors hover:bg-pastel-pink hover:text-cocoa sm:px-3"
             >
               <s.icon className="h-4 w-4" aria-hidden />
               <span className="hidden sm:inline">{s.title}</span>
@@ -202,41 +202,44 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-pastel-pink">
-      <div className="mx-auto flex max-w-5xl flex-col items-center px-4 py-16 text-center sm:py-24">
-        <Reveal>
-          <img
-            src={logoAsset.url}
-            alt="شعار كافيه Tara مع كوكيز الفراولة"
-            className="logo-float h-44 w-44 rounded-full object-cover shadow-pink ring-4 ring-card sm:h-56 sm:w-56"
-            width={224}
-            height={224}
-          />
-        </Reveal>
-        <Reveal delay={120}>
-          <h1 className="mt-8 font-display text-5xl font-extrabold text-soft-green-deep sm:text-6xl">
-            Tara
-          </h1>
-        </Reveal>
-        <Reveal delay={220}>
-          <p className="mt-3 text-lg font-medium text-foreground/70" dir="ltr">
-            One bite is never enough
-          </p>
-        </Reveal>
-        <Reveal delay={320}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="#cookies"
-              className="rounded-full bg-primary px-8 py-3 font-display text-lg font-bold text-primary-foreground shadow-lg transition-transform hover:scale-105"
-            >
-              تصفح المنيو
-            </a>
-            <a
-              href="#visit-us"
-              className="rounded-full bg-card px-8 py-3 font-display text-lg font-bold text-soft-green-deep shadow-lg transition-transform hover:scale-105"
-            >
-              زورونا
-            </a>
+    <section id="top" className="cookie-dots relative min-h-[720px] overflow-hidden bg-pastel-pink pt-24 sm:min-h-[760px] sm:pt-28">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-20 pt-10 md:grid-cols-[1.05fr_.95fr] md:pb-24 md:pt-16">
+        <div className="order-2 text-center md:order-1 md:text-right">
+          <Reveal>
+            <span className="inline-flex items-center gap-2 rounded-full border border-card/80 bg-card/70 px-4 py-2 text-sm font-bold text-pastel-pink-deep shadow-pink backdrop-blur">
+              مخبوز يومياً بكل حب
+              <Cookie className="h-4 w-4" aria-hidden />
+            </span>
+          </Reveal>
+          <Reveal delay={100}>
+            <h1 className="mt-6 font-display text-5xl font-extrabold leading-[1.1] text-cocoa sm:text-7xl">
+              لحظتك الحلوة
+              <span className="block text-pastel-pink-deep">تبدأ من Tara</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={200}>
+            <p className="mx-auto mt-5 max-w-lg text-lg font-medium leading-8 text-foreground/70 md:mx-0">
+              كوكيز طازجة ومشروبات محضّرة لتضيف لمسة دافئة لكل زيارة.
+            </p>
+          </Reveal>
+          <Reveal delay={300}>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
+              <a href="#cookies" className="rounded-xl bg-primary px-7 py-3.5 font-display text-base font-bold text-primary-foreground shadow-pink-strong transition-transform hover:-translate-y-1">
+                اكتشف المنيو
+              </a>
+              <a href="#visit-us" className="rounded-xl border border-card bg-card/80 px-7 py-3.5 font-display text-base font-bold text-cocoa shadow-pink transition-transform hover:-translate-y-1">
+                زورونا
+              </a>
+            </div>
+          </Reveal>
+        </div>
+        <Reveal className="order-1 md:order-2" delay={120}>
+          <div className="relative mx-auto aspect-square w-full max-w-[430px]">
+            <div className="absolute inset-5 rotate-3 rounded-[3rem] bg-soft-green shadow-pink-strong" />
+            <div className="absolute inset-5 -rotate-3 overflow-hidden rounded-[3rem] border-8 border-card bg-card shadow-pink-strong">
+              <img src={cookieClassic} alt="كوكيز Tara الطازجة" className="h-full w-full object-cover" width={1024} height={768} />
+            </div>
+            <img src={logoAsset.url} alt="شعار Tara" className="logo-float absolute -bottom-2 -right-2 h-28 w-28 rounded-full object-cover shadow-pink-strong ring-4 ring-card sm:h-32 sm:w-32" width={128} height={128} />
           </div>
         </Reveal>
       </div>
@@ -249,36 +252,42 @@ function Hero() {
 function MenuSectionBlock({ section }: { section: MenuSection }) {
   const Icon = section.icon;
   return (
-    <section id={section.id} className="scroll-mt-20 py-14 sm:py-20">
-      <div className="mx-auto max-w-5xl px-4">
+    <section id={section.id} className={`scroll-mt-28 py-16 sm:py-24 ${section.id === "cold-drinks" || section.id === "mojito" ? section.tint : ""}`}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <Reveal>
-          <div className="flex items-center gap-3">
+          <div className="mb-10 flex items-end justify-between gap-4 border-b border-foreground/10 pb-5">
+            <div className="flex items-center gap-3">
             <span
-              className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${section.tint} text-foreground`}
+              className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-card text-pastel-pink-deep shadow-pink`}
             >
               <Icon className="h-6 w-6" aria-hidden />
             </span>
-            <h2 className="font-display text-3xl font-bold sm:text-4xl">{section.title}</h2>
+              <div>
+                <p className="text-xs font-bold text-pastel-pink-deep">منيو Tara</p>
+                <h2 className="font-display text-3xl font-bold text-cocoa sm:text-4xl">{section.title}</h2>
+              </div>
+            </div>
+            <span className="hidden text-sm font-semibold text-foreground/55 sm:block">{section.items.length} أصناف</span>
           </div>
         </Reveal>
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
           {section.items.map((item, i) => (
-            <Reveal key={item.name} delay={i * 90}>
-              <article className="menu-card group flex min-h-32 overflow-hidden rounded-3xl border border-pastel-pink/60 bg-card p-3 shadow-pink transition-all duration-300 hover:-translate-y-1 hover:shadow-pink-strong">
-                <div className="h-28 w-28 shrink-0 overflow-hidden rounded-2xl sm:h-32 sm:w-32">
+            <Reveal key={item.name} delay={(i % 6) * 65} className="h-full">
+              <article className="menu-card group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card p-2.5 shadow-pink transition-all duration-300 hover:-translate-y-1.5 hover:shadow-pink-strong sm:p-3">
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
                   <img
                     src={item.image}
                     alt={item.name}
                     loading="lazy"
                     width={1024}
                     height={768}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                <div className="flex min-w-0 flex-1 flex-col justify-between gap-3 p-3">
-                  <h3 className="font-display text-lg font-bold leading-snug">{item.name}</h3>
+                <div className="flex min-w-0 flex-1 flex-col justify-between gap-3 px-1 pb-1 pt-4 sm:px-2">
+                  <h3 className="font-display text-base font-bold leading-snug text-cocoa sm:text-lg">{item.name}</h3>
                   <span
-                    className={`w-fit shrink-0 rounded-full px-3 py-1 text-sm font-bold text-primary-foreground ${section.chip}`}
+                    className="w-fit shrink-0 rounded-lg bg-pastel-pink px-2.5 py-1.5 text-xs font-bold text-pastel-pink-deep sm:text-sm"
                   >
                     {item.price} ل.س
                   </span>
@@ -296,22 +305,23 @@ function MenuSectionBlock({ section }: { section: MenuSection }) {
 
 function SiteFooter() {
   return (
-    <footer id="visit-us" className="scroll-mt-20 bg-soft-green py-14 sm:py-16">
+    <footer id="visit-us" className="cookie-dots scroll-mt-20 border-t border-soft-green-deep/10 bg-soft-green py-16 sm:py-20">
       <Reveal>
         <div className="mx-auto flex max-w-4xl flex-col items-center px-4 text-center">
+          <p className="mb-4 text-xs font-bold text-soft-green-deep">ننتظركم في Tara</p>
           <img
             src={logoAsset.url}
             alt="شعار Tara"
-            className="h-24 w-24 rounded-full object-cover shadow-pink ring-2 ring-card"
+            className="h-28 w-28 rounded-full object-cover shadow-pink-strong ring-4 ring-card"
             loading="lazy"
             width={96}
             height={96}
           />
-          <h2 className="mt-4 font-display text-3xl font-bold text-soft-green-deep">Tara</h2>
+          <h2 className="mt-5 font-display text-4xl font-bold text-cocoa">Tara</h2>
           <p className="mt-1 text-sm text-foreground/70" dir="ltr">
             One bite is never enough
           </p>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a href={CONTACT.maps} target="_blank" rel="noreferrer" className="footer-link">
               <MapPin className="h-5 w-5" aria-hidden />
               موقعنا
